@@ -1,0 +1,65 @@
+{% include "timer" %}
+<input type="hidden" id="emptyShakerSrc" value="{{'withoutshaker.png' | asset_url }}">
+<div class="constructor">	
+	<div class="wrapper">
+		<div class="constructor__header">Собери свое комбо со скидкой до <span>18%</span></div>
+		<div class="constructor__subheader">Нажми на зиплок, чтобы выбрать вкус</div>
+		<div class="constructor__flex-wrapper">
+			<div class="constructor__flex-item">
+				<div class="tastelist-trigger constructor__item-image constructor__item-image--empty"  data-target="block1">
+					<img src="{{ 'empty-zip.png' | asset_url }}" alt=""/> 
+				</div>
+				<div class="constructor__item-header">Первый зип</div>
+			</div>
+			<div class="constructor__flex-item">
+				<div class="tastelist-trigger constructor__item-image constructor__item-image--empty"  data-target="block2">
+					<img src="{{ 'empty-zip.png' | asset_url }}" alt=""/> 
+				</div>				
+				<div class="constructor__item-header">Второй зип</div>
+			</div>
+			<div class="constructor__flex-item">
+				<div class="tastelist-trigger constructor__item-image constructor__item-image--empty"  data-target="block3">
+					<img src="{{ 'empty-zip.png' | asset_url }}" alt=""/> 
+				</div>
+				<div class="constructor__item-header">Третий зип</div>
+			</div>
+			<div class="constructor__flex-item">
+				<div class="tastelist-trigger constructor__item-image constructor__item-image--empty"  data-target="block4">
+					<img src="{{ 'empty-zip.png' | asset_url }}" alt=""/> 
+				</div>				
+				<div class="constructor__item-header">Четвертый зип</div>
+			</div>						
+			<div class="constructor__flex-item">
+				<div class="constructor__item-shaker constructor__item-shaker--empty">					
+					<img src="{{ 'empty-shaker.png' | asset_url }}" alt=""/> 
+				</div>
+				<div class="constructor__item-header constructor__item-header--shaker">Выберите шейкер</div>
+			</div>
+		</div>	
+		<div class="constructor__sum-block">
+			Итог:
+			<span class="constructor__old-price"></span>
+			<span class="constructor__current-price"></span>
+			<span class="constructor__step-price"><span>0</span> тг</span>			 
+			<span class="constructor__step-sale">-18%</span>
+		</div>
+		<div class="constructor__buttons-block">
+			<button class="constructor__button constructor__button--auto" id="constructor__button--auto"  onclick="yaCounter52741135.reachGoal('constructor__button--auto');"   >Собрать за меня</button>
+			<button class="constructor__button constructor__button--tocart"    disabled="true">Добавить в корзину</button>
+		</div>
+	</div>
+</div>
+<div class="constructor__taste-list">
+	<div class="constructor__taste-list-header">Выберите <span>второй</span> вкус</div>
+	<div class="constructor__taste-list-close"><img src="{{'close.svg' | asset_url }}" alt=""/></div>
+	<div class="constructor__list-container">
+		
+	</div>
+</div>
+<div class="constructor__flex-item--shaker">
+	<div class="constructor__shaker-header">Выберите шейкер</div>
+	<div class="constructor__shaker-list-close"><img src="{{'close.svg' | asset_url }}" alt=""/></div>
+	<div class="constructor__shakers-list">
+			
+	</div>
+</div>

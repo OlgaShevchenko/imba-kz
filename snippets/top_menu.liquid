@@ -1,0 +1,61 @@
+{% unless template == "cart"  %}
+{% include "timer" %}
+{% endunless %}
+<div class="menu-block">
+	<div class="wrapper">
+		<div class="menu-container">
+			<div class="mob-menu-btn"></div>
+			<a  class="logo" href="/"  class="logo"></a>
+			<ul class="menu__desktop-list">
+				<li class="menu__desktop-list-item menu__desktop-list-item--shop">Магазин
+					<div class="menu__desktop-submenu">
+						<ul class="menu__desktop-sublist">
+							<li><a href="/collection/tovary">Все товары</a></li>
+							{% for collection in collections.tovary.subcollections %}
+								{% if collection.fields.ne_vyvodit.value == blank %}
+									{% if collection.id == 18489092 and show_sale_itm %} 
+									<li><a href="{{ collection.url }}?lang={{ language.locale }}" class="red">{{ collection.title }}</a></li>
+									{% else %}  
+									<li><a href="{{ collection.url }}?lang={{ language.locale }}">{{ collection.title }}</a></li>
+									{% endif %}  
+								{% endif %}
+							{% endfor %}								
+						</ul>
+					</div>
+				</li>
+				<li class="menu__desktop-list-item"><a href="/page/contacts" class="menu__desktop-list-link">Контакты</a></li>
+				<li class="menu__desktop-list-item"><a href="/page/faq" class="menu__desktop-list-link">FAQ</a></li>
+				<li class="menu__desktop-list-item"><a href="/page/dostavka-i-oplata" class="menu__desktop-list-link">Доставка и оплата   </a></li>
+				<div class="menu__social-media">
+					<a href="https://t.me/+g9WQM9l3pCBmOTVi"><img src="{{ 'telegram.svg' | asset_url}}" width="25" height="23" alt=""/></a>
+					<a href="https://vk.com/imba_energy"><img src="{{ 'vk.svg' | asset_url}}" width="35" height="19" alt=""/></a>
+				</div>
+			</ul>
+			<div class="menu__right-pane">
+				<div class="menu__search-trigger">
+					<img src="{{ 'search-icon.svg' | asset_url}}"  />
+				</div>				
+				<a href="/cart_items" class="cart">										
+					{% assign cart_size = 0 %}
+					{% for item in cart.items %}
+					  {% if item.id != 242939132 %}
+						  {% assign cart_size = cart_size | plus:item.quantity %}
+					  {% endif %}
+					{% endfor %}              
+					<span class="incart-quantity">{{ cart_size }}</span>
+				</a>
+			</div> 
+		</div>
+		<div class="search-pane" itemscope itemtype="http://schema.org/WebSite">
+			<link itemprop="url" href="https://imba.shop/"/>
+			<form action="/search" class="search-form"  method="get"   itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+				<meta itemprop="target" content="https://imba.shop/search?q={q}"/>
+				<div class="search-pane__magnifier"><img src="{{ 'search-icon.svg' | asset_url}}" width="16" height="16" alt="" /></div>
+				<div class="search-pane__back"><img src="{{ 'arrow-left.svg' | asset_url}}" width="21" height="21" alt="" /></div>
+				<input autocomplete="off" class="search-pane__input" itemprop="query-input" name="q" placeholder="Хочу купить" required="" type="search"  >
+				 <div class="search-pane__close"><img src="{{ 'delete-btn.svg' | asset_url}}" width="20" height="20" alt="" /></div>
+				<button class="search-button  search-pane__submit" type="submit">Найти</button>								</form>
+			<div class="search-results js-search-results"></div>
+		</div>
+	</div>	
+</div>

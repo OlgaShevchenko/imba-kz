@@ -1,0 +1,25 @@
+<div class="productslist-categories">
+	<div class="wrap">	
+		<div class="productslist-categories__list swiper">
+			<div  class="swiper-wrapper">
+				<div class="productslist-categories__li swiper-slide">
+					<a href="/collection/tovary?lang={{ language.locale }}" class="productslist-categories__item productslist-categories__item--1">Все товары</a>
+				</div>
+				{% for collection in collections.tovary.subcollections %}
+				{% if collection.fields.ne_vyvodit.value == blank %}	
+				 {% if collection.id == 18489092 %} 				
+				  <div class="productslist-categories__li swiper-slide">
+					<a href="{{ collection.url }}?lang={{ language.locale }}" class="productslist-categories__item productslist-categories__item--red">{{ collection.title }}</a>
+				</div>
+				{% else %}
+				<div class="productslist-categories__li swiper-slide">
+					<a href="{{ collection.url }}?lang={{ language.locale }}" class="productslist-categories__item">{{ collection.title }}</a>
+				</div>
+				{% endif %}
+				{% endif %}
+				{% endfor %}			
+			</div>
+		</div>
+	</div>	
+</div>
+

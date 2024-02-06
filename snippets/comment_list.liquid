@@ -1,0 +1,110 @@
+<div data-comments-list data-comments-moderated="{{ moderated }}">
+	{% if comments_list.size > 0  %}
+    <ul class="list-unstyled">
+      {% for item in comments_list %}
+        <li itemprop="review" itemscope="" itemtype="http://schema.org/Review"> 
+					<strong itemprop="author">{{ item.author |   truncate: 20 }}</strong>
+					<div class="float-end text-end ms-2">
+      			<small class="text-muted d-block mb-2" itemprop="datePublished" content="{{ item.created_at | date: "%d.%m.%Y" }}">{{ item.created_at | date: "%d.%m.%Y" }}</small>
+				{% if item.image.medium_url %}
+				<a href="{{ item.image.original_url }}" class="product__review-list-image"><img  src="{{ item.image.medium_url }}"></a>
+				{% endif %}
+          </div>
+					<p class="my-1" itemprop="reviewBody">{{ item.content }}</p>  
+					
+					
+					<div class="product__review-list-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating">
+						  <meta itemprop="worstRating" content="1">
+						  <meta itemprop="ratingValue" content="{{ item.rating }}">
+						  <meta itemprop="bestRating" content="5">
+						  {% case item.rating %} 
+							{% when 1 %}
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>				
+										{% when 2 %}							
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>		
+										{% when 3 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 4 %}
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 5 %}							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 6 %}							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 7 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 8 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 9 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>													
+										{% when 10 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										{% else %}
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+							{% endcase %}  			
+						</div>				
+					     			             
+					  
+          {% if item.replied? %}
+         <div class="d-flex product__review-list-answer">
+        <div class="flex-shrink-0">
+          <img src="{{ 'logo.svg' | asset_url }}" alt="">
+        </div>
+        <div class="flex-grow-1 ms-3 product__review-list-answer-text">
+          <strong>Ответ команды IMBA</strong>
+          <p class="my-1">{{ item.manager_reply }}</p>
+        </div>
+      </div>
+          {% endif %}
+        </li><!-- /.list-item -->
+      {% endfor %}
+    </ul>
+  {% else %}
+  
+  {% endif %}
+</div>
+
+{% assign comments_list = null %}

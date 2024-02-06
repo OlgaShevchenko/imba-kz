@@ -1,0 +1,129 @@
+.collection-blogers {
+	width: 100%;
+	float: left;
+}
+
+
+
+
+/*                   */
+
+.wrapper {
+	max-width: 1280px;
+	padding: 0;
+}
+@media (max-width: 1025px) {
+	.wrapper {
+		padding: 0  15px;
+	}
+}
+@media (max-width: 765px) {
+	.wrapper {
+		padding: 0;
+	}
+}
+
+.collection-blogers {
+	width: 100%;
+	float: left;
+	background: var(--gray-bg);	
+}
+.collection-blogers__pane {
+	display: flex;
+	align-items: center;
+	padding: 0 0 40px 23px;
+}
+@media (max-width: 1025px) {
+	.collection-blogers__pane {
+		padding: 0 0 30px 7px;
+	}
+}
+@media (max-width: 765px) {
+	.collection-blogers__pane {
+		padding: 0 0 15px 15px;
+	}
+}
+.collection-blogers__img {
+	padding-right: 40px;
+}
+@media (max-width: 765px) {
+	.collection-blogers__img {
+		padding-right: 15px;
+	}
+}
+.collection-blogers__img img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+@media (max-width: 1025px) {
+	.collection-blogers__img img {
+		width: 80px;
+		height: 80px;
+	}
+}
+.collection-blogers__title a{
+	font-size: 26px;
+	text-decoration: underline;
+	color: #000;
+	text-transform: uppercase;
+	font-family: var(--medium);
+	transition: var(--tranz);
+}
+@media (max-width: 1025px) {
+	.collection-blogers__title a{
+		font-size: 22px;
+	}	
+}
+@media (max-width: 765px) {
+	.collection-blogers__title a{
+		font-size: 18px;
+	}	
+}
+.collection-blogers__title a:hover {
+	color: var(--green);
+	transition: var(--tranz);
+}
+@media (max-width: 1025px) {
+	.collection-blogers__title a:hover {
+		color: #000;
+	}
+}
+.collection-blogers__subscr {
+	font-size: 20px;
+	color: #747474;
+	font-family: var(--medium);
+	padding-top: 11px;
+}
+@media (max-width: 1025px) {
+	.collection-blogers__subscr {
+		font-size: 16px;
+		padding-top: 5px;
+	}
+}
+@media (max-width: 765px) {
+	.collection-blogers__subscr {
+		font-size: 12px;
+	}
+}
+.collection-blogers__container {
+	display: flex;
+	padding-bottom: 55px;
+}
+@media (max-width: 1025px) {
+	.collection-blogers__container {
+		padding-bottom: 35px;
+	}
+}
+@media (max-width: 765px) {
+	.collection-blogers__container .swiper-wrapper {
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 765px) {
+	.collection-blogers__container .collection__item {
+		width: calc(50% - 6px) !important;
+	}
+}

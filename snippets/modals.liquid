@@ -1,0 +1,171 @@
+<div class="blur"></div>
+
+<div class="thankyou-popup">
+	<div  class="thankyou-popup__close"><img src="{{ 'button-close.svg' | asset_url}}" alt=""/></div>
+	<div class="thankyou-popup__header">ВАШ ТОВАР В КОРЗИНЕ!</div>
+	<div class="thankyou-popup__image"><img src="{{product.first_image.medium_url}}" alt=""/></div>
+	<div class="thankyou-popup__name">{{ product.title }}</div>
+	<div class="thankyou-popup__price">{{ product.price | money }}</div>
+	<span class="thankyou-popup__hidden-span cart-block__sum">{{ cart.items_price }}</span>
+
+	<div class="thankyou-popup__delivery">
+		<div class="thankyou-popup__delivery-text">Для <span>бесплатной доставки</span> добавьте товары на сумму <span class="thankyou-popup__sum"> 1500</span><span> тнг.</span> </div>
+		<a class="thankyou-popup__cart-link" href="/cart_items?lang=ru">ПЕРЕЙДИ В КОРЗИНУ</a>
+		<a class="thankyou-popup__continue-link">продолжи покупки</a>
+	</div>
+</div>
+
+<div class="thank-popup popup">
+	<div class="thank-popup__content">
+		<div  class="thank-popup__close"><img src="{{ 'delete.png' | asset_url}}" alt=""/></div>
+		<div class="thank-popup__header">товар добавлен в корзину</div>
+		<div class="thank-popup__subheader">Товар(ы) успешно добавлены в вашу корзину.</div>
+		<a class="thank-popup__cart-link" href="/cart_items?lang=ru">ПЕРЕЙДИ В КОРЗИНУ</a>
+		<a class="thank-popup__continue-link">продолжи покупки</a>
+		<div class="thank-popup__delivery">
+			<div class="thank-popup__delivery-image"><img src="{{ 'delivery-van.svg' | asset_url}}" alt=""/></div>
+		<div class="thank-popup__delivery-text"><span><a href="/page/delivery?lang={{ language.locale }}">БЕСПЛАТНАЯ ДОСТАВКА ОТ  14000 тнг. </a></span>
+		при онлайн оплате</div>
+		</div>
+	</div>
+</div>
+
+<div class="sertif-popup popup">
+    <div class="popup_container">
+        <div class="sertif-popup__close"><img src="{{ 'close.png' | asset_url}}" alt=""/></div>
+        <div class="sertif-popup__image"></div>
+    </div>
+</div>
+
+<div class="contact-block__popup popup">
+    <div class="contact-block__popup-header">твоё обращение принято </div>
+    <div class="contact-block__popup-text">В ближайшее время мы свяжемся с тобой по указанному E-mail.</div>
+    <button class="contact-block__popup-close">Закрыть</button>
+</div>
+
+
+
+<div class="pickup-popup popup" >
+    <img class="pickup-popup__close" src="{{ 'close.png' | asset_url}}" alt="" />
+    <div class="scrollpane" data-mcs-theme="minimal-dark">
+
+    </div>
+</div>
+
+
+
+<div class="sizes-popup">
+	<div class="sizes-popup__content">
+		<img src="{{ 'close.svg' | asset_url}}" class="sizes-popup__close" alt="" />
+		<div class="sizes-popup__description">
+			<div class="sizes-popup__description-header">Размерная сетка футболок унисекс</div>
+			<table class="sizes-popup__table">
+				<tr>
+					<th>Размер</th>
+					<th>Российский<br/> размер</th>
+					<th>Грудь (А), см</th>
+					<th>Длина (B), см </th>
+				</tr>
+				<tr>
+					<td>S</td>
+					<td>44-46</td>
+					<td>49</td>
+					<td>70</td>
+				</tr>
+				<tr>
+					<td>M</td>
+					<td>46-48</td>
+					<td>52</td>
+					<td>72</td>
+				</tr>
+				<tr>
+					<td>L</td>
+					<td>48-50</td>
+					<td>55</td>
+					<td>74</td>
+				</tr>
+				<tr>
+					<td>XL</td>
+					<td>50-52</td>
+					<td>58</td>
+					<td>76</td>
+				</tr>
+				<tr>
+					<td>XXL</td>
+					<td>52-54</td>
+					<td>61</td>
+					<td>78</td>
+				</tr>
+			</table>
+		</div>
+		<div class="sizes-popup__image"><img data-src="{{ 'tshort.svg' | asset_url}}" src="{{ 'empty.svg' | asset_url }}" class="b-lazy"  alt=""/></div>
+	</div>
+</div>
+<div class="mask-popup">
+  	 <div class="mask-popup__description-header">Размерная таблица для масок </div>
+	<div class="mask-popup__content">
+		<img src="{{ 'close.svg' | asset_url}}" class="mask-popup__close" alt="" />
+
+      	<div class="mask-popup__image"><img data-src="{{ 'mask.svg' | asset_url}}" src="{{ 'empty.svg' | asset_url }}" class="b-lazy" alt=""/></div>
+		<div class="mask-popup__description">
+
+			<table class="mask-popup__table">
+				<tr>
+					<th>Размер</th>
+                  <th><span>M</span></th>
+                  	<th><span>L</span></th>
+				</tr>
+				<tr>
+					<td> Длина верхнего среза (1) 1/2 маски, см</td>
+					<td><span>11</span></td>
+					<td><span>11.5</span></td>
+				</tr>
+				<tr>
+					<td> Длина нижнего среза (2) 1/2 маски, см</td>
+					<td><span>9.5</span></td>
+					<td><span>10.3</span></td>
+				</tr>
+              	<tr>
+					<td>Длина бокового среза (3), см</td>
+					<td><span>4</span></td>
+					<td><span>4</span></td>
+				</tr>
+              	<tr>
+					<td>Длина лямки (4), см</td>
+					<td><span>13.5</span></td>
+					<td><span>14</span></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
+<div class="unsubscribe-popup popup">
+	<img src="{{ 'close-black.svg' | asset_url}}" class="unsubscribe-popup__close" alt="" />
+	<div class="unsubscribe-popup__container unsubscribe-popup__container--step1">
+		<div class="unsubscribe-popup__image">
+			<img data-src="{{ 'hugging.svg' | asset_url}}" src="{{ 'empty.svg' | asset_url }}" class="b-lazy" alt=""/>
+		</div>
+		<div class="unsubscribe-popup__description">
+			<div class="unsubscribe-popup__header">Хотите отписаться от смс-рассылки? </div>
+			<div class="unsubscribe-popup__text"> Нам очень грустно, но если вы не передумали, просто введите ваш номер телефона и вы больше не будете получать сообщения о скидках и акциях, о конкурсах, новостях и о новых товарах. </div>
+			<form class="unsubscribe-popup__form" onsubmit="return false">
+				<input class="unsubscribe-popup__input" placeholder="+7 (___) ___-__-__ " type="text" />
+				<button class="unsubscribe-popup__button">отписаться</button>
+				<div class="unsubscribe-popup__error-text">Такой номер не найден.<br/>Попробуйте еще раз.</div>
+			</form>
+		</div>
+	</div>
+	<div class="unsubscribe-popup__container unsubscribe-popup__container--hidden  unsubscribe-popup__container--step2">
+		<div class="unsubscribe-popup__image">
+			<img data-src="{{ 'mailbox.svg' | asset_url}}"  src="{{ 'empty.svg' | asset_url }}" class="b-lazy"  alt=""/>
+		</div>
+		<div class="unsubscribe-popup__description">
+			<div class="unsubscribe-popup__success-header">Вы успешно отписались от смс-рассылки.</div>
+			<div class="unsubscribe-popup__success-text"> Если вам ошибочно придет смс от нас, обратитесь в службу поддержки.</div>
+			<div class="unsubscribe-popup__resubscribe-text">Если вы передумали, подписаться на рассылку можно <span class="unsubscribe-popup__resubscribe-trigger">тут.</span> </div>
+		</div>
+	</div>
+</div>
+
+

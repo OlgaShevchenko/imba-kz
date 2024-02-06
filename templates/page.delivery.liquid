@@ -1,0 +1,60 @@
+<div class="delivery-block page_margin">
+	<div class="wrapper">
+		<h1>ДОСТАВКА и оплата ПРОДУКЦИИ IMBA ENERGY</h1>		
+		<div class="delivery-block__subheader">Способ доставки</div>
+		<div class="delivery-block__flex">
+			<div class="delivery-block__item">
+				<div class="delivery-block__item-subheader">Казпочта</div>
+				<p>Все посылки доставляются почтовой службой «Казпочта»</p>
+				<p>Доставка осуществляется до ближайшего к вам отделения «Казпочты»</p>
+			</div>
+			<div class="delivery-block__item delivery-block__item--delivery">
+				<div class="delivery-block__item-subheader">3-6 рабочих дней </div>
+				<p>На сроки доставки влияет удаленность населённого пункта.</p>
+				<p>Сроки доставки не зависят от отправителя</p>
+			</div>
+		</div>		
+		<div class="delivery-block__subheader">Стоимость доставки</div>
+		<div class="delivery-block__flex">
+			<div class="delivery-block__item">
+				<div class="delivery-block__item-subheader">Бесплатно</div>
+              <p>Бесплатно доставим при заказе от <span class="freeprice">19000</span> тнг.</p>
+			</div>
+			<div class="delivery-block__item">
+				<div class="delivery-block__item-subheader">1 440 тг.</div>
+              <p>Если сумма заказа меньше <span class="freeprice">19 000</span> тг., независимо от состава посылки и отдаленности населенного пункта.</p>
+			</div>
+		</div>		
+		<div class="delivery-block__subheader">Способы оплаты</div>
+		<div class="delivery-block__flex">
+			<div class="delivery-block__item">
+				<div class="delivery-block__payment-img">
+					<img src="{{ 'visa-logo.svg' | asset_url}}" alt=""/>
+					<img src="{{ 'mastercard.svg' | asset_url}}" class="master" alt=""/>
+				</div>
+				<p>Принимаем к оплате банковские карты Visa, Mastercard.</p>
+			</div>	
+			<div class="delivery-block__item">
+				<div class="delivery-block__payment-img">					
+					<img src="{{ 'apple-pay.svg' | asset_url}}" alt=""/>
+					<img src="{{ 'google-pay.svg' | asset_url}}" alt=""/>
+				</div>
+				<p>Простая оплата через систему мобильных платежей Apple Pay и Google Pay</p>
+			</div>				
+		</div>
+		<div class="delivery-block__subheader">Важная информация</div>
+		<div class="delivery-block__bordered">
+			<ul>
+				<li>Мы не просим и не принимаем деньги прямым переводом на карту или кошелек.</li>
+				<li>Мы не работаем по пост оплате (оплата при получении).</li>
+				<li>Скидка по промокоду действует только на товары и не распоространяется на доставку.</li>
+				<li>Скидки по промокоду не суммируются.</li>
+			</ul>
+		</div>			
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+	$('.freeprice').html(freeSumVal);
+});
+</script>

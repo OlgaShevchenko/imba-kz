@@ -1,0 +1,104 @@
+{% include "variables" %}
+<div class="timer-block">
+	<div class="wrapper">
+		<div class="timer-block__close"></div>
+		<div class="timer-block__text">Акция</div>
+		<div class="timer-block__timer">
+			<div class="timer-block__timer-itm timer-d">00</div>
+			<div class="timer-block__timer-spacer">:</div>
+			<div class="timer-block__timer-itm  timer-h">00</div>
+			<div class="timer-block__timer-spacer">:</div>
+			<div class="timer-block__timer-itm  timer-m">00</div>
+			<div class="timer-block__timer-spacer">:</div>
+			<div class="timer-block__timer-itm  timer-s">00</div>
+		</div>
+		<div class="timer-block__text timer-block__text--2">{{timertext}}</div>
+		<a href="{% include 'main_page_banner_url' %}" class="timer-block__link">Жми</a>
+	</div>
+</div>
+<script>
+
+function countdown(dateEnd) {
+    var timer, days, hours, minutes, seconds;
+
+    dateEnd = new Date(dateEnd);
+    dateEnd = dateEnd.getTime();
+    if ( isNaN(dateEnd) ) {
+      return;
+    }
+
+    timer = setInterval(calculate, 1000);
+
+    function calculate() {
+      var dateStart = new Date();
+      var dateStart = new Date(dateStart.getUTCFullYear(),
+                               dateStart.getUTCMonth(),
+                               dateStart.getUTCDate(),
+                               dateStart.getHours(),
+                               dateStart.getUTCMinutes(),
+                               dateStart.getUTCSeconds());
+      var timeRemaining = parseInt((dateEnd - dateStart.getTime()) / 1000)
+
+      if ( timeRemaining >= 0 ) {
+        days    = parseInt(timeRemaining / 86400);
+        timeRemaining   = (timeRemaining % 86400);
+        hours   = parseInt(timeRemaining / 3600);
+        timeRemaining   = (timeRemaining % 3600);
+        minutes = parseInt(timeRemaining / 60);
+        timeRemaining   = (timeRemaining % 60);
+        seconds = parseInt(timeRemaining);
+		if (days < 10 ) {
+			days = "0" + days;
+		}
+		if (hours < 10 ) {
+			hours = "0" + hours;
+		}
+		if (minutes < 10 ) {
+			minutes = "0" + minutes;
+		}
+		if (seconds < 10 ) {
+			seconds = "0" + seconds;
+		}
+		$('.timer-d').text(days);
+		$('.timer-h').text(hours);
+		$('.timer-m').text(minutes);
+		$('.timer-s').text(seconds);
+  	$('.timer__item--days').text(sklonenie(days));
+    $('.timer__item--hours').text(sklonenie2(hours));
+	$('.timer__item--min').text(sklonenie3(minutes));
+	$('.timer__item--sec').text(sklonenie4(seconds)); 
+		
+    }
+
+
+
+   else {
+    return;
+  }
+}
+
+function display(days, hours, minutes, seconds) {}
+}
+countdown('{{enddate}}');
+function sklonenie(number) {
+    var cases = [2, 0, 1, 1, 1, 2];
+  	var txt = ['день', 'дня', 'дней']
+    return txt[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+} 
+function sklonenie2(number) {
+    var cases = [2, 0, 1, 1, 1, 2];
+  	var txt = ['час', 'часа', 'часов']
+    return txt[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+} 
+function sklonenie3(number) {
+    var cases = [2, 0, 1, 1, 1, 2];
+  	var txt = ['минута', 'минуты', 'минут']
+    return txt[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+} 
+function sklonenie4(number) {
+    var cases = [2, 0, 1, 1, 1, 2];
+  	var txt = ['секунда', 'секунды', 'секунд']
+    return txt[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+} 
+
+</script>

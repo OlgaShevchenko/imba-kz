@@ -1,0 +1,15 @@
+<div class="incart-pop">
+	<div class="incart-pop__close"><img src="{{ 'delete-btn.svg' | asset_url}}" /></div>
+	<div class="incart-pop__header">Товар добавлен в корзину</div>
+	<div class="incart-pop__product">
+		<div class="incart-pop__img"><img src="{{product.first_image.medium_url}}" alt="" /></div>
+		<div class="incart-pop__name">{{ product.title }}</div>
+		<div class="incart-pop__price"><span class="new"></span><span class="old"></span><span class="current"></span></div>
+	</div>
+	<div class="incart-pop__delivery-text">Для <span>бесплатной</span> доставки добавьте товары на сумму <span>11 500 тг.</span></div>
+	<div class="incart-pop__sum"></div>
+	<div class="incart-pop__buttons">
+		<a class="incart-pop__incart-btn"  href="/cart_items">Перейти в корзину</a>
+		<div class="incart-pop__continue-btn">Продолжить покупки</div>
+	</div>
+</div>

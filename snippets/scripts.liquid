@@ -1,0 +1,147 @@
+<script type="text/javascript"  async>
+  Site = _.merge({}, Site, {
+    template: '{{ template }}',
+
+    menuConfig: {
+      'top-menu': {
+        levels: {
+          1: ['horizontal'],
+        }
+      },
+      'catalog-menu': {
+        levels: {
+          1: ['horizontal'],
+          2: ['vertical', 'drop', 'down'],
+          default: ['vertical', 'drop', 'right'],
+        }
+      },
+      'sidebar-menu': {
+        levels: {
+          default: ['vertical', 'collapse']
+        }
+      },
+      'mobile-sidebar-menu': {
+        levels: {
+          default: ['vertical', 'collapse']
+        }
+      }
+    },
+    filterConfig: {
+      'sidebar-filter': {
+        submitOnChange: false,
+        collapse: true,
+        openActive: true,
+      },
+      'is-modal-filter': {
+        collapse: true,
+        openActive: true,
+      }
+    },
+    alertifyConfig :{
+      glossary: {
+        modal: {
+          ok: '{{ messages.s_alertify-ok }}',
+          cancel: '{{ messages.s_alertify-cancel }}',
+        },
+        cart: {
+          item_added: '{{ messages.s_alertify-addcart }}',
+          item_removed: '{{ messages.s_alertify-removecart }}'
+        },
+        compares: {
+          product_added: '{{ messages.product_added_to_comparison }}',
+          product_removed: '{{ messages.product_removed_from_comparison }}',
+          overload: '{{ messages.maximum_number_of_comparable }}'
+        }
+      }
+    },
+    messages: {
+      field_name: '{{ messages.field_name }}',
+      field_email: '{{ messages.field_email }}',
+      field_message: '{{ messages.field_message }}',
+      label_product: '{{ messages.label_product }}',
+      label_variant: '{{ messages.label_variant }}',
+
+      preorder: '{{ messages.preorder }}',
+      button_submit: '{{ messages.button_submit }}'
+    }
+  });
+
+  Products.setConfig({
+    fileUrl: (typeof fileUrl == 'undefined') ? {} : fileUrl,
+    options: {
+      default: 'option-span',
+      "Цвет": 'option-cvet',
+      "Вкус": 'option-vkus',
+	  "Размер": 'option-razmer',
+	  "Цвет коврика": 'option-cvet-kovrika',
+	  "Принт": 'option-print',
+      "Размер маски": 'option-razmer_maski'	  
+    }
+  });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+<script src="{{ 'autocomplete.min.js' | asset_url }}" ></script>
+<script src="{{ 'script.js?20201223' | asset_url }}" ></script>
+<script src="{{ 'gift.script.js?202020129' | asset_url }}" ></script>
+<script src="{{ 'gTag.script.js' | asset_url }}" ></script>
+
+{% assign pushconfig = "orders-push-configurable.js" | asset_url_if_exists %}
+{% assign pushconfigcss = "orders-push-configurable.css" | asset_url_if_exists %}
+
+{% if pushconfig and pushconfigcss and template!= "page.sport" %}
+<script src="{{ pushconfig }}?6" ></script>
+<link rel="stylesheet" href="{{ pushconfigcss }}"/>
+{% else %}
+<!-- jconfigurable: {{ pushconfig }} -->
+<!-- cconfigurable: {{ pushconfigcss }} -->
+{% endif %}
+
+
+{% if template == blank %}<script src="{{ 'checkout.script.js?202020129' | asset_url }}" ></script>{% endif %}
+{% if template == "page.constructor" %}		
+	<script src="{{ 'constructor.js' | asset_url }}"></script>	
+	<script src="{{ 'constructor.script.js' | asset_url }}"></script>	
+<script src="{{ 'jquery.mCustomScrollbar.min.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "index" %}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
+<script src="{{ 'index.js' | asset_url }}"></script>
+<script src="{{ 'coming-soon.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "collection" %}	
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
+<script src="{{ 'collection.js' | asset_url }}"></script>
+<script src="{{ 'coming-soon.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "collection.blogers" %}	
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
+<script src="{{ 'collection.js' | asset_url }}"></script>
+<script src="{{ 'collection-blogers.js' | asset_url }}"></script>
+<script src="{{ 'coming-soon.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "product" %}	
+<script src="{{ 'moment.min.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'jquery.magnific-popup.min.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'moment-with-locales.min.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'bootstrap-datetimepicker.min.js' | asset_url }}"></script>
+<script src="{{ 'bootstrap.bundle.min.js' | asset_url }}"></script>
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
+<script src="{{ 'jquery.magnific-popup.min.js' | asset_url }}"></script>
+<script src="{{ 'product.js' | asset_url }}"></script>
+<script src="{{ 'coming-soon.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "page.faq" %}	
+<script src="{{ 'lightbox.min.js' | asset_url }}"></script>
+<script src="{{ 'faq.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "page.promo" %}	
+<script src="{{ 'promo.js' | asset_url }}"></script>
+{% endif %}
+{% if template == "cart" %}	
+<script src="{{ 'cart.script.js' | asset_url }}" ></script>
+{% endif %}
+{% if template == "search" %}	
+<script src="{{ 'search.js' | asset_url }}" ></script>
+{% endif %}

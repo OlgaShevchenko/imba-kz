@@ -1,0 +1,49 @@
+<div class="footer">
+	<div class="wrapper">
+		<div class="footer-container">
+			<div class="footer__logo-block"><img src="{{ 'footer-logo.svg' | asset_url}}" loading="lazy" alt=""/></div>
+			<div class="footer__menu-block">
+				<ul class="footer__menu-line1">
+					<li><a href="/collection/tovary">Магазин</a></li>
+					<li><a href="/">О продукте</a></li>
+					<li><a href="/page/dostavka-i-oplata">Доставка и оплата</a></li>
+					<li><a href="/page/faq">FAQ</a></li>
+					<li><a href="/page/research">Исследования</a></li>
+					<li><a href="/">Профиль</a></li>
+					<li><a href="/page/contacts">Контакты</a></li>
+				</ul>				
+				<div class="footer__subcontainer">
+					<ul class="footer__menu-line2">
+						<li><a href="/page/exchange">Возврат</a></li>
+						<li><a href="/page/privacy_policy">Политика конфиденциальности</a></li>
+						<li><a href="/page/oferta">Оферта</a></li>
+						<li><a href="/">Отписаться от смс-рассылки</a></li>					
+					</ul>
+					<ul class="footer__links">
+						<li><a href="https://t.me/+g9WQM9l3pCBmOTVi" target="_blank">
+						<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M14.6866 0.227731C14.4316 0.0114912 14.0311 -0.0194488 13.617 0.146811H13.6163C13.1808 0.321571 1.28757 5.42293 0.80341 5.63135C0.71535 5.66195 -0.0537296 5.94891 0.0254904 6.58811C0.0962104 7.16441 0.71433 7.40309 0.78981 7.43063L3.81343 8.46593C4.01403 9.13369 4.75353 11.5973 4.91707 12.1237C5.01907 12.4518 5.18533 12.8829 5.47671 12.9716C5.73239 13.0702 5.98671 12.9801 6.15127 12.8509L7.99985 11.1363L10.984 13.4636L11.0551 13.5061C11.2577 13.5959 11.4519 13.6407 11.6372 13.6407C11.7803 13.6407 11.9177 13.6139 12.0489 13.5602C12.496 13.3766 12.6749 12.9505 12.6936 12.9023L14.9226 1.31607C15.0586 0.697271 14.8696 0.382431 14.6866 0.227731ZM6.48005 8.88005L5.46005 11.6001L4.44005 8.20005L12.2601 2.42005L6.48005 8.88005Z" fill="#969696"/>
+						</svg>
+						</a></li>
+						<li><a href="https://vk.com/imba_energy" target="_blank">
+						<svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M18.3493 6.80771C18.0098 6.42271 18.1069 6.25143 18.3493 5.90729C18.3537 5.90336 21.1564 2.42579 21.4452 1.24643L21.4469 1.24564C21.5904 0.815857 21.4469 0.5 20.753 0.5H18.457C17.8724 0.5 17.6029 0.771071 17.4585 1.07436C17.4585 1.07436 16.2895 3.58707 14.6357 5.21586C14.1019 5.6865 13.8552 5.83736 13.5638 5.83736C13.4203 5.83736 13.1971 5.6865 13.1971 5.25671V1.24564C13.1971 0.730214 13.0335 0.5 12.5496 0.5H8.93925C8.57261 0.5 8.35473 0.740429 8.35473 0.964357C8.35473 1.45307 9.18163 1.56543 9.26739 2.94043V5.92379C9.26739 6.5775 9.13526 6.69771 8.84212 6.69771C8.06159 6.69771 6.16715 4.17479 5.04449 1.28729C4.81786 0.727071 4.59647 0.500786 4.00758 0.500786H1.71062C1.05523 0.500786 0.923096 0.771857 0.923096 1.07514C0.923096 1.611 1.70362 4.27536 4.55272 7.79536C6.45154 10.1981 9.12563 11.5 11.5582 11.5C13.0204 11.5 13.1989 11.2109 13.1989 10.7135C13.1989 8.41764 13.0668 8.20079 13.7992 8.20079C14.1387 8.20079 14.7232 8.35164 16.0882 9.51057C17.6484 10.8848 17.9048 11.5 18.7781 11.5H21.0742C21.7287 11.5 22.0603 11.2109 21.8696 10.6404C21.4329 9.44064 18.4823 6.97271 18.3493 6.80771Z" fill="#969696"/>
+						</svg>
+						</a></li>
+					</ul>
+				</div>
+			</div>							
+			<ul class="footer__phone-line">
+				<li class="footer__phone"><a href="tel:{{ account.phone }}" target="_blank">{{ account.phone }}</a></li>
+				<li class="footer__status"><span class="footer__status-icon"></span>Сейчас <span class="status">онлайн</span></li>
+			</ul>
+			<ul class="footer__cards-line">
+				<li><img src="{{ 'visa.svg' | asset_url}}" alt=""/></li>
+				<li><img src="{{ 'master.svg' | asset_url}}" alt=""/></li>
+				<li><img src="{{ 'apple.svg' | asset_url}}" alt=""/></li>
+				<li><img src="{{ 'google.svg' | asset_url}}" alt=""/></li>
+			</ul>
+			<div class="footer__copyright">2022 Все права защищены</div>
+		</div>
+	</div>
+</div>

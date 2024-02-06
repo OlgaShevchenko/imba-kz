@@ -1,0 +1,129 @@
+<div class="index-header page_margin">	
+  <a href="{% include 'main_page_banner_url' %}" class="index-header__bg">  
+     <img src="{{ 'headerbg.jpg' | asset_url }}" class="img1" />
+    <img src="{{ 'headerbg-mid.jpg' | asset_url }}" class="img2" />
+    <img src="{{ 'headerbg-mob.jpg' | asset_url }}" class="img3" />
+  </a>  
+</div>
+<div class="stripe">
+	<div class="stripe__inner">до 6.3   литра в каждой упаковке <span><img src="{{ 'smiling-face.svg' | asset_url}}" alt=""/></span> Без сахара <span><img src="{{ 'smiling-face2.svg' | asset_url}}" alt=""/></span>до 6.3   литра в каждой упаковке <span><img src="{{ 'smiling-face.svg' | asset_url}}" alt=""/></span> Без сахара <span><img src="{{ 'smiling-face2.svg' | asset_url}}" alt=""/></span>до 6.3   литра в каждой упаковке <span><img src="{{ 'smiling-face.svg' | asset_url}}" alt=""/></span> Без сахара <span><img src="{{ 'smiling-face2.svg' | asset_url}}" alt=""/></span>до 6.3   литра в каждой упаковке <span><img src="{{ 'smiling-face.svg' | asset_url}}" alt=""/></span> Без сахара <span><img src="{{ 'smiling-face2.svg' | asset_url}}" alt=""/></span></div>
+</div>
+<div class="index">
+	<div class="wrapper">
+		
+		<div class="index__header index__header--flex">
+			<span class="index__header__span">Успей купить  </span>
+			<div class="timer">
+				<div class="timer__item">
+					<span class="timer-d timer__item--hrs">00</span>
+					<span class="timer__item--txt timer__item--days">дней</span>
+				</div>				
+				<div class="timer__item">
+					<span class="timer-h timer__item--hrs">00</span>
+					<span  class="timer__item--txt timer__item--hours">часов</span>
+				</div>	
+				<div class="timer__item">
+					<span class="timer-m timer__item--hrs">00</span>
+					<span  class="timer__item--txt  timer__item--min">минут</span>
+				</div>	
+				<div class="timer__item">
+					<span class="timer-s timer__item--hrs">00</span>
+					<span  class="timer__item--txt  timer__item--sec">секунд</span>
+				</div>		
+			</div> 
+		</div>
+		<div class="index__container swiper">
+			<div class="swiper-wrapper">
+			{% assign product_list =  collections.skidki-2.products    %}				
+            {% for product in product_list  limit:4 %}	
+			<div class="collection__item swiper-slide  {% unless product.available %}collection__item--disabled{% endunless %}">
+				{% include "collection-item" %} 
+			</div>	
+			{% endfor %}	
+			</div>
+		</div>
+      <div class="index__header">Самые продаваемые товары </div>
+		<div class="index__container swiper">			
+			<div class="swiper-wrapper">
+			{% assign product_list =  collections.na-glavnoy.products   %}				
+            {% for product in product_list limit:4  %}	
+				<div class="collection__item swiper-slide  {% unless product.available %}collection__item--disabled{% endunless %}">
+				{% include "collection-item" %} 
+				</div>
+			{% endfor %}	
+			</div>
+		</div>
+		<div class="catalog-text">Переходи в каталог, чтоб увидеть все товары</div>
+		<a href="/collection/tovary" class="catalog-link">Смотри все товары</a>
+		<div class="index__header">IMba enery Clan</div>
+		<div class="index__subheader">продукты разработанные совместно с блогерами</div>
+		<div class="blogers-block">
+			<div class="blogers-block__item">
+				<div class="blogers-block__item-person">
+					<div class="blogers-block__item-image"><img src="{{ 'joe.jpg' | asset_url}}" alt="" /></div>
+					<div class="blogers-block__item-name"><a href="https://www.youtube.com/channel/UCLizDDpxiFRoqTLlMyGX7lQ" target="_blank">Joe speen</a></div>
+					<div class="blogers-block__item-subs">1.77 млн. подписчиков</div>
+				</div>
+				<div class="blogers-block__item-product">
+					{% assign product_list =  collections.joe-speen.products    %}				
+					{% for product in product_list  limit:1 %}	
+						<div class="collection__item  {% unless product.available %}collection__item--disabled{% endunless %}">
+						{% include "collection-item" %}
+						</div>	
+					{% endfor %}
+				</div>
+			</div>
+			<div class="blogers-block__item">
+				<div class="blogers-block__item-person">
+					<div class="blogers-block__item-image"><img src="{{ 'quadrat.jpg' | asset_url}}" alt="" /></div>
+					<div class="blogers-block__item-name"><a href="https://www.youtube.com/channel/UCT0doSjbG6eOKM5DGdovkWw" target="_blank">Qadrat</a></div>
+					<div class="blogers-block__item-subs">124 тыс. подписчиков</div>
+				</div>
+				<div class="blogers-block__item-product">
+					{% assign product_list =  collections.qadrat.products    %}				
+					{% for product in product_list  limit:1 %}
+					<div class="collection__item  {% unless product.available %}collection__item--disabled{% endunless %}">	
+						{% include "collection-item" %} 
+					</div>	
+					{% endfor %}
+				</div>
+			</div>
+          	{% comment %}
+			<div class="blogers-block__item">
+				<div class="blogers-block__item-person">
+					<div class="blogers-block__item-image"><img src="{{ 'soda.jpg' | asset_url}}" alt="" /></div>
+					<div class="blogers-block__item-name"><a href="https://www.youtube.com/channel/UCa2oFpjziUQIImcpkrflwDw
+" target="_blank">SodaEffect </a></div>
+					<div class="blogers-block__item-subs">781 тыс. подписчиков</div>
+				</div>
+				<div class="blogers-block__item-product">
+					{% assign product_list =  collections.sodaeffect.products    %}				
+					{% for product in product_list  limit:1 %}	
+						<div class="collection__item  {% unless product.available %}collection__item--disabled{% endunless %}">
+						{% include "collection-item" %} 
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="blogers-block__item">
+				<div class="blogers-block__item-person">
+					<div class="blogers-block__item-image"><img src="{{ 'faus.jpg' | asset_url}}" alt="" /></div>
+					<div class="blogers-block__item-name"><a href="https://www.youtube.com/channel/UC9BW2G1gwSQKCGi7gwpk7Bw" target="_blank">FaUsTnp </a></div>
+					<div class="blogers-block__item-subs">736 тыс. подписчиков</div>
+				</div>
+				<div class="blogers-block__item-product">
+					{% assign product_list =  collections.bebey.products    %}				
+					{% for product in product_list  limit:1 %}	
+						<div class="collection__item  {% unless product.available %}collection__item--disabled{% endunless %}">
+						{% include "collection-item" %} 
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+          {% endcomment %}
+		</div>
+		
+	</div>
+</div>
+{% include 'coming-soon' %}
+{% include 'incart-popup' %}

@@ -1,0 +1,32 @@
+{% assign start_quantity = start_quantity | default: 1 %}
+{% assign input_name = is_item | default: 'quantity' | replace: 'true', 'cart[quantity][id]' | replace: 'id', variant_id %}
+{% assign is_gift = is_gift | default: false %}
+{% if input_name == 'quantity' %}
+  {% assign style = 'style="display: none"' %}
+{% endif %}
+{% if is_gift %}
+  
+    <!--
+	<button type="button" data-quantity-change="-1" class="counter-button is-count-down cart-block__minus" disabled>-</button>
+
+    <input type="text" value="{{ start_quantity }}" name="{{ input_name }}" class="counter-input cart-block__input" readonly/>
+
+    <button type="button" data-quantity-change="1" class="counter-button is-count-up cart-block__plus" disabled>+</button>
+	-->
+  
+  {% else %}
+	<div class="cart-block__item-quantity counter js-variant-counter modal__cart-quantity quantity-regulator" data-quantity {{ style }}>
+      <div data-quantity-change="-1" class="cart-block__item-button  is-count-down cart-block__minus minus"></div>
+      <input type="text" value="{{ start_quantity }}" name="{{ input_name }}" class="counter-input cart-block__item-input form-control"/>
+      <div data-quantity-change="1" class="cart-block__item-button is-count-up cart-block__plus plus"></div>
+	</div>
+
+  {% endif %}
+  
+
+{% assign start_quantity = null %}
+{% assign is_item = null %}
+{% assign variant_id = null %}
+
+{% assign is_gift = null %}
+{% assign input_name = null %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class='' lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  {% include "head" %}
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  <meta content='noindex, nofollow' name='robots'>
+  <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  {{ 'checkout2.core' | global_stylesheet_tag }}
+
+  {% include "styles" %}
+</head>
+
+<body class='adaptive fhg-body' data-template="{{ template }}">
+
+  <!--<div class="top-panel-wrapper">
+    <div class="container">
+      {% include "top_panel" %}
+    </div>
+  </div>
+
+  <div class="header-wrapper">
+    <div class="container">
+      {% include "header" %}
+    </div>
+  </div>
+
+  <div class="catalog-menu-wrapper hidden-sm">
+    <div class="container">
+      {% include "menu", source_type: 'collection', source_handle: 'all', menu_class: 'catalog-menu', show_icon: false %}
+    </div>
+  </div>-->
+{% include "top_menu" %}
+
+  <div class="zakaz-page">
+
+    <div class='wrapper'>
+      {% if client %}
+      {% yield 'menu' %}
+      {% endif %}
+      <div class=''>
+        
+		
+				<div class="zakaz-page__header">{% yield 'title' %}
+					
+				</div>
+				
+			
+			
+        {% yield %}
+      </div>
+    </div>  
+</div> 
+ {% include "footer" %}
+
+
+</body>
+
+
+  {% include "scripts" %}
+  {% include_insales_scripts 'common-js@v2' %}
+
+</html>
+{% include 'carrotquest_inline.js' %}

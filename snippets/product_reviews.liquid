@@ -1,0 +1,54 @@
+<div class="review-form"> 
+	<div class="review-form__header">Поставьте оценку</div>
+	<div class="review-form__rating">											 	   		   										
+		<label title="Отлично" class="review-form__label review-form__label--active">
+			<input  type="radio"  value="10" name="rating" class="rating"  checked="checked"/>
+			<i class="review_img5"></i>
+		</label>		
+		<label title="Хорошо"  class="review-form__label review-form__label--selected">
+			<input  type="radio" value="8" name="rating" class="rating"/>
+			<i class="review_img4"></i>
+		</label> 		
+		<label title="Нормально"  class="review-form__label review-form__label--selected">
+			<input  type="radio"  value="6" name="rating" class="rating"  />
+			<i class="review_img3"></i>
+		</label>		
+		<label title="Плохо"  class="review-form__label review-form__label--selected">
+			<input type="radio"  value="4" name="rating" class="rating"/>
+			<i class="review_img2"></i>
+		</label>		
+		<label title="Ужасно"  class="review-form__label review-form__label--selected">
+			<input  type="radio" value="2" name="rating" class="rating"/>
+			<i class="review_img1"></i> 
+		</label>		
+	</div>				
+	<div class="review-form__subheader">Опишите свои впечатления</div>		
+	<div class="review-form__input-container">
+		<textarea name="text" class="review__textarea"></textarea>
+	</div>	
+	<div class="review-form__subheader">Ваше имя</div>
+	<div class="review-form__input-container">
+		<input name="author_name" class="review__input"  type="text" />
+	</div>		
+	{% if account.reviews_images_enabled? %}	
+	<div class="review-form__file-container">
+		<div class="review-form__file-block">
+			<label  class="review-form__file-label">
+				<input class="review-form__file" type="file" accept="image/jpeg,image/png" name="review-img">				
+			</label>
+			<img class="review__input-file-img"  alt="">			
+		</div>		
+		<div class="review-form__file-description">Добавьте одно фото </div>
+	</div>
+	 {% endif %} 	
+	<button type="button" class="review-form__submit">Отправить отзыв</button>
+	<div class="review-form__hide">Отмена</div>
+</div>
+	<div class="review__success" style="display: none;">
+		 <div class="review__success-message">
+			{{ messages.review_is_added_moderated }}
+		 </div>
+	</div>
+
+
+

@@ -1,0 +1,31 @@
+<script>
+(function() {
+	window.carrotquest_account_url = '{{account.url}}';
+	{% case template %}
+	{% when 'cart'  %}
+	window.carrotquest_cartviewed=true;
+	{% when 'product'  %}
+	var carrotquest_prodcat = [];
+	{% for collection in product.collections %}
+	carrotquest_prodcat.push('{{collection.title}}');
+	{% endfor %}
+	window.carrotquest_productviewed={
+		product_name:'{{product.title}}'
+		,product_img:'{{product.first_image.original_url}}'
+		,product_price:'{{product.price}}'
+		,product_link:'{{ account.url }}{{product.url}}'
+		,product_categories: carrotquest_prodcat
+	}
+	{% endcase %}
+	{% if client %}
+	window.carrotquest_isclient = true;
+	window.carrotquest_clientgroup = '{{client_group.title}}';
+	var carrotquest_clientturnover = '{{client.turnover}}';
+	if (carrotquest_clientturnover != ''){
+		window.carrotquest_clientturnover = carrotquest_clientturnover;
+	}
+	{% else %}
+	window.carrotquest_isclient = false;
+	{% endif %}
+})();
+</script>   

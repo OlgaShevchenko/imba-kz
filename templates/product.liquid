@@ -1,0 +1,644 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+{% include "variables" %}
+<div id="product-product" class="container-xxl page_margin" >
+	<nav class="product__breadcrumb">
+		<ol class="breadcrumb">      
+			<li class="breadcrumb-item">
+				<a href="/">
+				<span>Imba shop</span>
+				</a>				
+			</li>      
+			<li class="breadcrumb-item">
+				<a href="/collection/tovary">
+				<span>Все товары</span>
+				</a>				
+			</li>      
+			<li class="breadcrumb-item active">{{ product.title }}</li>    
+		</ol>
+	</nav>	
+	<div class="row">
+		<div id="content" class="col">
+			<div class="row gx-xxl-5 mb-4 mb-md-5 mb-xl-4">
+				<div class="col-md-auto d-none d-xl-block">
+					<div class="product__swiper-vertical">
+						<div class="product__swiper-vertical-prev"></div>
+						<div class="icon icon-arrow-up swiper swiper-thumbs">
+							<div class="swiper-wrapper">                    
+							{% for image in product.images %}
+								{% if language.locale == image.title or image.title == blank %}
+									<div class="swiper-slide">
+										<img alt="" class="img-thumbnail" src="{{  image.large_url }}">
+									</div>	
+								{% endif %}							
+							{% endfor %}		
+							</div>
+						</div>
+						<div class="product__swiper-vertical-next"></div>
+					</div>
+				</div>
+				<div class="col-md-6 col-xxl-auto">
+					<a href="" class="product__link-back"></a>
+					<div class="product__swiper-horizontal mb-4">
+						<div class="swiper">
+							<div class="swiper-wrapper">
+							{% for image in product.images %}
+								{% if language.locale == image.title or image.title == blank %}
+									<div class="swiper-slide">
+										<a href="{{ image.original_url }}">
+										<img alt="" class="img-fluid" src="{{  image.original_url }}">
+										</a>
+									</div>	
+								{% endif %}							
+							{% endfor %}								  
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="col">
+					<h1 class="product__h1">{{ product.title }}</h1>
+					<div class="product__labels">
+						{% if  product.properties.obnovlennyy-sostav.characteristics.first.title %}
+							<div class="product__label product__label--yellow">Обновленный состав</div>
+						{% endif %}	
+						{% if product.properties.ogranichenaya-seriya.characteristics.first.title %}
+							<div class="product__label">Ограниченная серия</div>
+						{% endif %}
+						{% if product.properties.aktsiya.characteristics.first.title %}
+							<div class="product__label product__label--red">Акция</div>
+						{% endif %}							
+					</div>
+					<div class="d-flex mb-4 m-wrap">
+						{% if product.available %}
+						<div class="product__price">
+							{% unless product.old_price %}	
+							<span class="product__price-base">{{ product.price | money }}</span>
+							{% else %}
+							<span class="product__price-special">{{ product.price | money }}</span>
+							<span class="product__price-base">{{ product.old_price | money }}</span>
+							{% assign psum = product.old_price | minus: product.price  %}	
+							{% assign psum = psum | divided_by: product.old_price  | times: 100 | round: 0 %}
+							<div class="product__percent">- {{ psum }} %</div>
+							{% endunless %}	
+						</div>
+						{% endif %}
+						<div class="product__rating ms-auto">							
+							{% if product.reviews.size > 0  %}
+							{% case product.rating %}
+								{% when 1 %}
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>				
+								{% when 2 %}							
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>		
+								{% when 3 %} 							
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								{% when 4 %}
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								{% when 5 %}							
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								{% when 6 %}							
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								{% when 7 %} 							
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								{% when 8 %} 							
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								{% when 9 %} 							
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>	
+								<i class="fas fa-star"></i>				
+								{% when 10 %} 							
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								{% else %}
+								0- or 10+				
+							{% endcase %} 						
+								
+								{% else %}
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+								<i class="far fa-star"></i>
+											
+							{% endif %}	
+							<div class="product__rating-text">{{product.reviews_count}} отзыва</div>
+						</div>
+					</div>
+					<div id="product" class="mb-5">		
+						{% if product.available %}
+						<form class="" action="{{ cart_url }}" method="post" data-product-id="{{ product.id }}" data-recently-view="{{ product.id }}" data-product-gallery=".js-product-gallery-main">
+						<div class="row gx-3 gx-lg-4 gx-xl-5">
+							<div class="col-auto">								
+								<div class="product__quantity quantity-regulator">
+									<div class="minus is-count-down data-quantity-change="-1"></div>								
+									<input type="text" class="form-control" name="quantity" value="1">
+									<div class="plus is-count-up" data-quantity-change="1"></div>
+								</div>
+							</div>
+							<div class="col">	
+								<input type="hidden" name="variant_id" value="{{product.variants.first.id}}" >
+									
+								<button type="button" class="btn btn-primary btn-lg product__button-cart" data-item-add>Добавь в корзину</button>								
+							</div>
+							{% comment %}
+							<div class="col-auto align-self-center" >
+								<svg class="icon icon-favorite product__button-wishlist" data-product="wishlist-add" data-product-id="304254406"><use xlink:href="/catalog/view/theme/default/image/icons.svg#icon-favorite"></use></svg>
+							</div>
+							{% endcomment %}
+						</div>	
+						</form>	
+					{% else %}
+					<div class="alert alert-warning" role="alert">
+						<i class="fas fa-exclamation-circle"></i> Товар распродан. Вы можете выбрать похожие товары из списка рекомендуемых ниже.
+				  </div>
+				{% endif %}			  
+					</div>					
+					<div class="product__reward mb-4" style="display: none;">
+					<b class="product__reward-points">555</b> <b>баллов</b> за эту покупку
+					</div>
+
+					<div class="product__delivery__info">
+					Бесплатная доставка от {{ minfreesum }} + {{ gifttext  }}<br><br>
+					{{ deliverytext }}
+					</div>
+					{% if product.fields.html_blok.value == blank %}
+					<div class="accordion accordion-flush" id="accordionProduct">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-description" aria-expanded="false" aria-controls="flush-description">Описание</button>
+							</h2>
+							<div id="flush-description" class="accordion-collapse collapse" data-bs-parent="#accordionProduct">
+								<div class="accordion-body">
+								{{ product.description }}
+								</div>
+							</div>
+						</div>
+						{% unless product.fields.sostav.value == blank %} 
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-ingredient" aria-expanded="false" aria-controls="flush-ingredient">Состав</button>
+							</h2>
+							<div id="flush-ingredient" class="accordion-collapse collapse" data-bs-parent="#accordionProduct">
+								<div class="accordion-body">
+									{{product.fields.sostav.value}} 
+								</div>
+							</div>
+						</div>
+						{% endunless %}
+						{%  unless product.fields.harakteristiki.value == blank %}
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-attribute" aria-expanded="false" aria-controls="flush-attribute">Характеристики</button>
+							</h2>
+							<div id="flush-attribute" class="accordion-collapse collapse" data-bs-parent="#accordionProduct">
+								<div class="accordion-body">
+								{{product.fields.harakteristiki.value}} 
+								</div>
+							</div>
+						</div>
+						{% endunless %}
+					</div>
+					{% endif %}
+				</div>
+			</div>     
+			{% if product.fields.html_blok.value %}
+			<div class="product__energy-container">
+				{{product.fields.html_blok.value}} 
+			</div>
+			{% endif %}
+			<div class="product__related swiper-product">
+				<div class="swiper-heading">
+					<h3>Покупают вместе</h3>
+					<div class="swiper-heading-pager">
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
+				<div class="swiper">
+					<div class="swiper-wrapper">						
+						{% for product in product.related_products %}
+						<div class="swiper-slide">
+							<div class="product-thumb">
+								<div class="product-thumb__labels">
+								{% if  product.properties.obnovlennyy-sostav.characteristics.first.title %}
+										<div class="product-thumb__label product-thumb__label--yellow">Обновленный состав</div>
+									{% endif %}	
+									{% if product.properties.ogranichenaya-seriya.characteristics.first.title %}
+										<div class="product-thumb__label">Ограниченная серия</div>
+									{% endif %}
+									{% if product.properties.aktsiya.characteristics.first.title %}
+										<div class="product-thumb__label product-thumb__label--red">Акция</div>
+									{% endif %}	
+									{% if product.old_price %}
+										{% assign psum = product.old_price | minus: product.price  %}	
+										{% assign psum = psum | divided_by: 100 | round: 0 %}
+										<div class="product-thumb__percent">- {{ psum }} %</div>
+									{% endif %}								
+								</div>
+								{% comment %}
+								<div class="product-thumb__wishlist">
+									<svg class="icon icon-favorite" data-product="wishlist-add" data-product-id="190788106"><use xlink:href="/catalog/view/theme/default/image/icons.svg#icon-favorite"></use></svg>
+								</div>
+								{% endcomment %}
+								{% assign product_image = product.first_image.medium_url %}		
+								{% assign imgsum = 0  %}	           
+								{% if product.images.size > 1 %}
+									{% for pimage in product.images %} 
+										{% if imgsum == 1 %}
+											{% assign second_product_image = pimage.medium_url %}				  
+										{% break %}	
+										{% endif %}	
+											{% assign imgsum =  imgsum | plus: 1  %}	
+									{% endfor %}	
+									{% else %}
+									{% assign second_product_image = product.first_image.medium_url %}	  
+								{% endif %}
+								<a href="{{  product.url }}" class="product-thumb__image text-center">
+									<img src="{{  product_image }}" alt="{{  product.title }}" class="img-fluid">
+									<img src="{{  second_product_image }}" alt="{{  product.title }}" class="img-fluid">
+								</a>
+								<div class="product-thumb__body">
+								{% if product.reviews.size > 0  %}	
+									<div class="product-thumb__rating">
+									{% case product.rating %}
+										{% when 1 %}
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>				
+										{% when 2 %}							
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>		
+										{% when 3 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 4 %}
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 5 %}							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 6 %}							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 7 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 8 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 9 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>				
+										{% when 10 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										{% else %}
+										0- or 10+				
+									{% endcase %} 
+									({{product.reviews_count}})
+									</div>
+									{% else %}
+									<div class="product-thumb__rating product-thumb__rating2">
+									<i class="far fa-star"></i>
+									<i class="far fa-star"></i>
+									<i class="far fa-star"></i>
+									<i class="far fa-star"></i>
+									<i class="far fa-star"></i>
+									(0)
+									</div>				
+								
+								{% endif %}	
+							
+								<a href="{{ product.url }}" class="product-thumb__name">{{ product.title }}</a>
+								<div class="d-flex mb-2 mb-lg-3">
+								{% unless product.old_price %}
+									<div class="product-thumb__price">{{ product.price | money }}</div>
+								{% else %}	
+								<div class="product-thumb__price-special">{{ product.price | money }}</div>
+								<div class="product-thumb__price-base">{{ product.old_price | money }}</div>
+								{% endunless %}
+								</div>
+								{% if product.available %}
+								<input type="hidden"  readonly type="text" value="1" name="quantity">
+								<button type="button" class="btn btn-primary product-thumb__button-add" data-pid="{{ product.variants.first.id }}">
+								
+								Добавь в корзину
+								</button>
+								{% endif %} 
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>						
+				</div>
+				<div class="swiper-pagination swiper-pagination-bullets"></div> 
+			</div>
+			     
+				<div class="product__review">
+					<p class="product__review-heading">Отзывы ({{product.reviews_count}})</p>
+					<div class="row">
+						<div class="col-md-6 col-lg-5 order-1 order-md-2">
+							{% if product.reviews.size > 0  %}
+							<div class="product__review-info">
+								<div class="d-flex justify-content-between align-items-center mb-3">
+									<div class="product__review-info-rating">
+										{% if product.reviews.size > 0  %}											
+										{{ product.rating | divided_by: 2  }}
+										{% else %}
+										0
+										{% endif %}
+									</div>
+									<div class="product__review-info-stars">
+										{% case product.rating %}
+										{% when 1 %}
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>				
+										{% when 2 %}							
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>		
+										{% when 3 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 4 %}
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 5 %}							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 6 %}							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 7 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 8 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="far fa-star"></i>
+										{% when 9 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>	
+										<i class="fas fa-star"></i>				
+										{% when 10 %} 							
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										{% else %}
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										<i class="far fa-star"></i>
+										{% endcase %}										
+									</div>
+								</div>
+								<div class="product__review-info-count">
+									На основании {{product.reviews_count}} отзывов
+								</div>
+								{% assign val5 = 0 %}
+								{% assign val4 = 0 %}
+								{% assign val3 = 0 %}
+								{% assign val2 = 0 %}
+								{% assign val1 = 0 %}
+								{% for item in product.reviews %}								
+									{% case item.rating %} 
+										{% when 1 %}										
+										{% when 2 %}
+										{% assign val1 = val1 | plus: 1 %}
+										{% when 3 %}										
+										{% when 4 %}
+										{% assign val2 = val2 | plus: 1 %}
+										{% when 5 %}										
+										{% when 6 %}
+										{% assign val3 = val3 | plus: 1 %}
+										{% when 7 %}										
+										{% when 8 %}
+										{% assign val4 = val4 | plus: 1 %}
+										{% when 9 %}										
+										{% when 10 %}
+										{% assign val5 = val5 | plus: 1 %}
+									{% endcase %}	
+								{% endfor %}
+								<div class="product__review-info-progress">
+									<div class="d-flex flex-row mb-2">
+										<div class="product__review-info-progress-rating">5</div>
+										<div class="progress">
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="88" class="progress-bar" role="progressbar" style="width: {{ val5 | times: 100 | divided_by: product.reviews_count }}%"></div>
+										</div>
+										<div class="text-left">{{ val5 | times: 100 | divided_by: product.reviews_count }}%</div>
+									</div>
+									<div class="d-flex flex-row mb-2">
+										<div class="product__review-info-progress-rating">4</div>
+										<div class="progress">
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="3" class="progress-bar" role="progressbar" style="width: {{ val4 | times: 100 | divided_by: product.reviews_count }}%"></div>
+										</div>
+										<div class="text-left">{{ val4 | times: 100 | divided_by: product.reviews_count }}%</div>
+									</div>
+									<div class="d-flex flex-row mb-2">
+										<div class="product__review-info-progress-rating">3</div>
+										<div class="progress">
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="6" class="progress-bar" role="progressbar" style="width: {{ val3 | times: 100 | divided_by: product.reviews_count }}%"></div>
+										</div>
+										<div class="text-left">{{ val3 | times: 100 | divided_by: product.reviews_count }}%</div>
+									</div>
+									<div class="d-flex flex-row mb-2">
+										<div class="product__review-info-progress-rating">2	</div>
+										<div class="progress">
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="3" class="progress-bar" role="progressbar" style="width: {{ val2 | times: 100 | divided_by: product.reviews_count }}%"></div>
+										</div>
+										<div class="text-left">{{ val2 | times: 100 | divided_by: product.reviews_count }}%</div>
+									</div>
+									<div class="d-flex flex-row mb-2">
+										<div class="product__review-info-progress-rating">1</div>
+										<div class="progress">
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar" role="progressbar" style="width: {{ val1 | times: 100 | divided_by: product.reviews_count }}%"></div>
+										</div>
+										<div class="text-left">{{ val1 | times: 100 | divided_by: product.reviews_count }}%</div>
+									</div>
+								</div>
+							</div>
+{% endif %}
+							<div class="product__add-review">Написать отзыв	</div>
+							
+						</div>
+						<div class="col-md-6 col-lg-7 order-2 order-md-1">
+							<div class="product__review-list">
+								{% include 'comment_list', comments_list: product.reviews, moderated: account.reviews_moderated? %}
+								<div class="text-start"></div>
+								<div class="product__review-button-show">Показать еще</div>
+							</div>
+							<form class="product__review-form d-none review-form">
+								<h4>Оставить отзыв</h4>
+								<div class="mb-3">
+									<label class="form-label" for="input-review-name">Ваше имя</label> 
+									<input class="form-control  review__input" id="input-review-name" name="name" type="text">
+								</div>
+								<div class="mb-3">
+									<label class="form-label" for="input-review-text">Ваш отзыв</label> 
+									<textarea class="form-control review__textarea" id="input-review-text" name="text" rows="3"></textarea>
+								</div>
+								<div class="form-group row align-items-center">
+									<div class="col-auto me-auto mb-3">
+										<div class="rating-stars">
+											<input id="rating5" class="rating" name="rating" type="radio" value="10"> 
+											<label for="rating5"><i class="fas fa-star"></i></label> 
+											<input id="rating4" class="rating" name="rating" type="radio" value="8"> 
+											<label for="rating4"><i class="fas fa-star"></i></label> 
+											<input id="rating3" class="rating" name="rating" type="radio" value="6"> 
+											<label for="rating3"><i class="fas fa-star"></i></label> 
+											<input id="rating2" class="rating" name="rating" type="radio" value="4"> 
+											<label for="rating2"><i class="fas fa-star"></i></label> 
+											<input id="rating1" class="rating" name="rating" type="radio" value="2"> 
+											<label for="rating1"><i class="fas fa-star"></i></label>
+										</div>
+									</div>
+									<div class="col-md-auto mb-3">
+										<button class="btn btn-primary review-form__submit" id="button-review" type="button">Отправить отзыв</button>
+									</div>
+								</div>
+							</form>
+							<div class="review__success" style="display: none">{{ messages.review_is_added_moderated }}</div>
+						</div>
+				</div>
+			</div>
+			{% unless product.fields.html_blok.value == blank %}
+			<h3>В составе натуральные компоненты без сахара</h3>
+			<div class="row">
+				<div class="col-lg-7">
+					<div class="accordion accordion-flush" id="accordionProduct">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-description" aria-expanded="false" aria-controls="flush-description">Описание</button>
+							</h2>
+							<div id="flush-description" class="accordion-collapse collapse" data-bs-parent="#accordionProduct">
+								<div class="accordion-body">
+								{{ product.description }}
+								</div>
+							</div>
+						</div>
+						{% unless product.fields.sostav.value == blank %} 
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-ingredient" aria-expanded="false" aria-controls="flush-ingredient">Состав</button>
+							</h2>
+							<div id="flush-ingredient" class="accordion-collapse collapse" data-bs-parent="#accordionProduct">
+								<div class="accordion-body">
+									{{product.fields.sostav.value}} 
+								</div>
+							</div>
+						</div>
+						{% endunless %}
+						{%  unless product.fields.harakteristiki.value == blank %}
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-attribute" aria-expanded="false" aria-controls="flush-attribute">Характеристики</button>
+							</h2>
+							<div id="flush-attribute" class="accordion-collapse collapse" data-bs-parent="#accordionProduct">
+								<div class="accordion-body">
+								{{product.fields.harakteristiki.value}} 
+								</div>
+							</div>
+						</div>
+						{% endunless %}
+					</div>
+				</div>
+			</div>   
+			{% endunless %}
+		</div>
+	</div>   
+</div>
+{% include 'incart-popup' %}
+	

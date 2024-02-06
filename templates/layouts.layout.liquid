@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include "head" %}
+    {% include "styles" %}    
+  </head>
+  <body class="fhg-body">
+	{% include "variables" %}
+	{% include "top_menu" %}	
+    {% include "no_js_alert" %}     
+    {{ content_for_layout }}    
+	{% include "footer" %}
+  </body>
+  {% include "scripts" %}
+</html>
+{% include 'carrotquest_inline.js' %}

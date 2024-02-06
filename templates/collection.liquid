@@ -1,0 +1,77 @@
+{% include "shop-banner" %} 
+{% include "collection_categories-list" %} 
+<div class="collection-page">
+	<div class="wrapper">
+		<div class="collection__timer-block">
+			<div class="timer-header">До конца акции</div>
+			<div class="timer">
+				<div class="timer__item">
+					<span class="timer-d timer__item--hrs">00</span>
+					<span class="timer__item--txt timer__item--days">дней</span>
+				</div>				
+				<div class="timer__item">
+					<span class="timer-h timer__item--hrs">00</span>
+					<span  class="timer__item--txt timer__item--hours">часов</span>
+				</div>	
+				<div class="timer__item">
+					<span class="timer-m timer__item--hrs">00</span>
+					<span  class="timer__item--txt  timer__item--min">минут</span>
+				</div>	
+				<div class="timer__item">
+					<span class="timer-s timer__item--hrs">00</span>
+					<span  class="timer__item--txt  timer__item--sec">секунд</span>
+				</div>		
+			</div> 
+		</div>
+	</div>	
+	{% assign blocksnum = 0  %}	
+	{% assign articleList ="" %}
+	{% assign product_list = collections.tovary.products  %}
+	{% for product in product_list %}					
+		{% if product.properties.vybor-pokupateley.characteristics.first.title %}
+			{% assign blocksnum =  blocksnum | plus: 1  %}						
+		{% endif %}				
+	{% endfor %}
+	{% if blocksnum > 0 %}
+	<div class="buyers-choice">
+		<div class="wrapper">
+			<div class="buyers-choice__header">Выбор покупателей</div>
+			<div class="collection__container">					
+				{% assign counter = 0  %}					
+				{% for product in product_list %}				
+					{% if counter < 4 %}
+						{% if product.properties.vybor-pokupateley.characteristics.first.title %}
+						<div class="collection__item {% unless product.available %}collection__item--disabled{% endunless %}">
+						{% include "collection-item" %} 
+						</div>
+						{% assign counter = counter | plus: 1  %}	
+							
+						{% endif %}						
+					{% endif %}	
+				{% endfor %}	
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	<div class="wrapper">
+		<div class="collection__container">	
+			{% assign product_list1 = collection.products   %}			
+			{% paginate product_list1 by 20 %}				
+            {% for product in product_list1 %}	
+				{% unless product.properties.vybor-pokupateley.characteristics.first.title %}
+					<div class="collection__item {% unless product.available %}collection__item--disabled{% endunless %}">
+					{% include "collection-item" %} 				
+					</div>	
+				{% endunless %}	
+			{% endfor %}	
+			{% if paginate.parts.size > 1 %}
+			<div class="collection__pagination">		
+				{% include "pagination" %}		
+			</div>
+			{% endif %}
+			{% endpaginate %}		
+		</div>
+	</div>
+</div>
+{% include 'coming-soon' %}
+{% include 'incart' %}

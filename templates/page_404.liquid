@@ -1,0 +1,27 @@
+<div class="error-block">
+	<div class="wrapper">
+		<div class="error-container">
+			<h1>404</h1>
+			<h2>Упс, на этой странице пусто.</h2>
+			<h3>Keep calm and recharge with IMBA GAME ENERGY. </h3>
+			<a href="/?lang={{ language.locale }}" class="link">Hа главную</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+let my_url = window.location.pathname;
+let urls = {
+  '/contact-us':'/page/contacts',
+  '/faq':'/page/faq',
+  '/glavnaya/23-apelsin-korica.html':'/product/apelsin-koritsa',
+  '/glavnaya/24-citrusovyj-miks.html':'/product/tsitrusovyy-miks',
+  '/glavnaya/25-vinogdradno-grejpfruktovyj.html':'/product/vinogradno-greypfrutovyy',
+  '/glavnaya/32-shejker-imba-energy-6-sashe.html':'/product/sheyker-6-sashe',
+  '/order':'/cart_items?lang=ru',
+  '/products':'/collection/tovary',
+  '/glavnaya/34-citrusovyj-miks-shejker-imba.html': '/product/tsitrusovyy-miks-sheyker-imba'
+}
+if(urls[my_url]) {
+  location.replace(urls[my_url] + window.location.search)
+}
+</script>

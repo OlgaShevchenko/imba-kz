@@ -1,0 +1,139 @@
+	{% if product.properties.is_new.characteristics.first.title %}
+		<div class="collection__item-label collection__item-label--new">Новинка</div>
+	{% endif %}
+	{% if product.properties.ogranichenaya-seriya.characteristics.first.title %}
+		<div class="collection__item-label collection__item-label--limited">Ограниченная серия</div>
+	{% endif %}
+	{% if product.properties.aktsiya.characteristics.first.title %}
+		<div class="collection__item-label">Акция</div>
+	{% endif %}	
+
+	{% assign product_image = product.first_image.medium_url %}		
+	{% assign imgsum = 0  %}	           
+	{% if product.images.size > 1 %}
+		  {% for pimage in product.images %} 
+			  {% if imgsum == 1 %}
+				  {% assign second_product_image = pimage.medium_url %}				  
+				   {% break %}	
+			  {% endif %}	
+			  {% assign imgsum =  imgsum | plus: 1  %}	
+		  {% endfor %}	
+   {% else %}
+	  {% assign second_product_image = product.first_image.medium_url %}	  
+   {% endif %}
+	<div class="collection__item-image">
+      	{% if product.properties.obnovlennyy-sostav.characteristics.first.title %}
+                <div class="collection__item-label--sostav">
+                  <img class="img" src= "{{ 'attention-icon.png' | asset_url }}" alt=""/>
+                  Обновленный состав</div>
+            {% endif %}
+		<a href="{{ product.url }}">          	
+			<picture  class="lozad">
+	            <source srcset="{{  product_image  | image_url: 680, format: 'webp'  }}">
+				<img  data-src="{{  product_image}}" class="collection__image--visible lozad" loading="lazy" alt="">				
+			</picture>
+			<picture class="lozad">
+				<source srcset="{{  second_product_image  | image_url: 680, format: 'webp'  }}">
+				<img  data-src="{{  second_product_image}}" class="collection__image--hidden lozad" loading="lazy" alt="">
+			</picture>			 
+		</a>
+	</div>
+	<div class="collection__item-title"><a href="{{ product.url }}">{{ product.title }}</a></div>
+	<div class="collection__item-rating">	
+	<div>	
+	{% if product.rating %}              					
+	{% case product.rating %} 
+	{% when 1 %}							
+	<img src= "{{ 'star-half.svg' | asset_url}}"  loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}"  class="gray"  loading="lazy" width="15" height="15"	alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}"  class="gray"  loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 2 %}							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 3 %} 							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star-half.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 4 %}												
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	{% when 5 %}							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star-half.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 6 %}							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 7 %} 							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star-half.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 8 %} 							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" class="gray" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 9 %} 							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>  
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star-half.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>							
+	{% when 10 %} 							
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>  
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	{% else %}
+	0- or 10+
+	{% endcase %}                      
+	{% else %}
+	<img src= "{{ 'star-gray.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>  
+	<img src= "{{ 'star-gray.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star-gray.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star-gray.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/>
+	<img src= "{{ 'star-gray.svg' | asset_url}}" loading="lazy" width="15" height="15" alt=""/> 				
+	{% endif %}
+	</div>
+	{% if product.reviews_count >  0 %}
+		<span class="collection__item-rcount">({{product.reviews_count}})</span>
+		{% else %}
+		<span class="collection__item-rcount">(0)</span>
+	{% endif %}	
+	</div>
+	<div class="collection__item-price">
+	{% unless product.old_price %}	
+	<span class="current">{{ product.price | money }}</span>
+	{% else %}
+	<span class="new">{{ product.price | money }}</span> <span class="old">{{ product.old_price | money }}</span>
+	{% endunless %}
+	</div>				
+	{% if product.available %}
+	<button  class="collection__item-button">								
+		<input hidden readonly type="text" value="1"> 
+		<div  data-pid="{{ product.variants.first.id }}">Добавь в  корзину</div>
+	</button>
+	{% else %}
+	<div  class="collection__item-button--report" >								
+		Узнать о поступлении
+	</div>
+	{% endif %}  

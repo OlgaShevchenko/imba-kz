@@ -1,0 +1,99 @@
+{% if cart.items.size > 0 %}
+<!-- Event snippet for брошенная корзина remarketing page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-768923614/j3RHCJSh0pcBEN6v0-4C',
+      'value': 1.0,
+      'currency': 'UAH',
+      'aw_remarketing_only': true
+  });
+</script>
+<div class="cart-block">
+	<div class="wrapper">
+		<div class="cart-block__header">КОРЗИНА</div>
+		<div class="cart__delivery">
+		{% if  cart.total_price > 24990 %}
+			Бесплатная доставка
+		{% else %}	
+			Бесплатная доставка от 24 990 
+		{% endif %}	
+		</div>	
+		<form action="{{ cart_items }}" method="post" class="shopping-cart" data-cart-form>
+			<div class="cart__content">
+				{% assign  fullprice = 0 %}
+				{% for item in cart.items %}
+				{% include 'cart_item' %}
+				{% endfor %}
+			</div>
+			<div class="cart-block__sum-content">											
+				<div class="cart-block__form-block">
+					<div class="cart-block__form-container">
+					 	<input type="text" class="cart-block__input-block"  {% if cart.coupon %}value="{{ cart.coupon }}"{% endif %} placeholder="Введи промокод " />
+					    <button class="cart-block__send-button">применить</button> 						
+					</div>
+					<button class="cart-block__remove-coupon cart-block__remove-coupon2 cart-block__remove-button"></button>
+					<div  class="cart-block__error-text"></div>	
+					{% for discount in cart.discounts %}
+						<div class="cart-block__form-text"></div>
+					{% endfor %}			
+									
+				</div>
+				<div class="cart-block__sum-block">					
+					<div class="cart-block__sum-line1">
+					{% for discount in cart.discounts %}				 					 
+						<div class="cart-block__promo-text">{{ discount.description }}</div>
+						{% if discount.description != 'combosale1' and discount.description != 'combosale2' %}
+						<button class="cart-block__remove-coupon cart-block__remove-button">Удалить</button>				 
+						{% endif %}
+					{% endfor %}
+					{% if cart.discounts.size > 0 %}
+						{% for discount in cart.discounts %}								
+						<div class="cart-block__sum-discount">{{ discount.amount | money | remove: "тг." }} </div>
+						{% endfor %}
+					{% endif %}	
+					</div>
+					<div class="cart-block__sum-line2">
+						<div class="cart-block__sum-header">Итог:</div>
+						<div class="cart-block__sum">
+							{% if fullprice > 0 %} 
+							<span class="red">{{ cart.total_price | money | remove: "тг."  }}</span>
+							<span class="old">{{ fullprice }} </span>
+							{% else %}
+							{{ cart.total_price | money | remove: "тг."  }} 
+							{% endif %}	
+						</div>							
+					</div>
+				</div>
+				<button class="cart-block__order-button">Оформить заказ</button>
+				
+			</div>
+			<input type="hidden" name="_method" value="put">
+			<input type="hidden" name="make_order" value="">
+			<input type="hidden" name="lang" value="{{ language.locale }}"/>
+		</form>
+	</div>
+</div>
+
+			
+
+  
+  
+ 
+  
+  
+  {% assign cart_empty_class = 'hidden' %}
+  {% else %}
+<div class="empty-cart-block">
+		<div class="wrapper">
+			<div class="empty-cart-block__container">
+			<div class="empty-cart-block__img"><img src= "{{ 'korzina.svg' | asset_url}}" alt=""/></div>
+			<h1>{{ messages.cart_is_empty }}</h1>
+			<h2>Самое время добавить в нее что-нибудь</h2>			
+			<a href="/collection/tovary?lang={{ language.locale }}" class="empty-cart-block__back-button">Перейти к выбору</a>
+			</div>
+		</div>		
+	</div>
+{% endif %}
+
+{% assign cart_empty_class = null %}
+

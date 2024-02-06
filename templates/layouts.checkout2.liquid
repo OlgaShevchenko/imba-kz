@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class='' lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  {% include "head" %}
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  <meta content='noindex, nofollow' name='robots'>
+  <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>  
+  {{ 'checkout2.core' | global_stylesheet_tag }}
+{% include "styles" %}
+<link rel="stylesheet" href="{{ "checkout.css" | asset_url }}" media="all"   />
+</head>
+<body class='adaptive fhg-body spec-page'>
+<div class="menu-block">
+	<div class="wrapper">
+		<div class="menu-container">
+			<a href="/cart_items" class="menu-container__back"></a>
+			<a  class="logo" href="/"  class="logo"></a>
+			<div class="menu-container__empty"></div>
+		</div>
+	</div>
+</div>	
+<div class="checkout">
+	<div class="wrapper">
+		<div class="checkout__header">{% yield 'title' %}</div>
+
+		<div class='checkout-v2-wrapper co-section--checkout_content'>
+
+		  <div class='co-section--checkout_order co-section--checkout_order_sided'>
+			{% yield 'sidebar' %}
+			{% yield %}
+		  </div>
+		</div>
+	</div>
+</div> 
+{% include "footer" %}
+</body> 
+{% include "scripts" %}
+</html>
+{% include 'carrotquest_inline.js' %}

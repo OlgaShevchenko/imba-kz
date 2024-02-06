@@ -1,0 +1,30 @@
+{% if item.product.properties.is_gift.characteristics.first.title %}
+	<div class="cart-block__item cart-block__item--free ok" data-product-id="{{ item.product.id }}" data-item-id="{{ item.id }}">
+		<div class="cart-block__item-image"><img src="{{ item.image.large_url }}" alt="{{ item.title }}"/></div>
+		<div class="cart-block__item-content">
+			<div class="cart-block__item-name cart-block__item-name--free">{{ item.title }}</div>
+			<div class="cart-block__item-quantity cart-block__item-quantity--hidden"></div>		
+			<div class="cart-block__item-price cart-block__free">Бесплатно</div>
+			<button class="cart-block__item-remove cart-block__item-remove--hidden"></button>
+		</div>	
+	</div>
+{% else %}
+	<div class="cart-block__item"  data-product-id="{{ item.product.id }}" {% if item.product.properties.large_pack.characteristics.first.title %}
+                       data-with-gift="1"
+                    {% endif %} data-item-id="{{ item.id }}">
+	<div class="cart-block__item-image"><a href="{{ item.product.url }}"><img  title="{{ item.title }}" alt="{{ item.title }}" src="{{ item.image.large_url }}" /></a></div>
+	<div class="cart-block__item-content">
+		<div class="cart-block__item-name"><a href="{{ item.product.url }}">{{ item.title }}</a></div>	
+		{% include "product_counter", is_item: true, start_quantity: item.quantity, variant_id: item.id , is_gift: false %}
+		<div class="cart-block__item-price {% if item.product.old_price %}cart-block__item-price--red{% endif %}">
+		{{ item.total_price | money | remove: "тг." }}	
+			{% if item.product.old_price %}<span class="cart-block__item-price--old"> {{ item.product.old_price  | times: item.quantity | money | remove: "тг." }} </span>
+			{% assign tempval =  item.product.old_price  | times: item.quantity%}
+			{% assign  fullprice = fullprice | plus: tempval   | round: 0  %}
+			{% endif %}		
+		</div>
+		<button class="cart-block__item-remove is-item-delete is-transparent" data-item-delete="{{ item.id }}"></button>
+	</div>
+</div>
+{% endif %}
+<!-- /.cart-item -->

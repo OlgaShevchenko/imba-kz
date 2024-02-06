@@ -1,0 +1,29 @@
+{% include "shop-banner" %} 
+{% include "collection_categories-list" %}
+<div class="collection-blogers">
+	<div class="wrapper">
+	{% for collection in collection.subcollections %}	
+		<div class="collection-blogers__header">
+			<div class="collection-blogers__pane">			
+				<div class="collection-blogers__img"><img src="{{ collection.image.large_url }}" alt="{{ collection.title }}" /></div>
+				<div class="collection-blogers__text">
+					<div class="collection-blogers__title"><a href="{{ collection.seo_description |  strip_html }}" target="_blank">{{ collection.title }}</a></div>
+					<div class="collection-blogers__subscr">{{ collection.description }}</div>  
+				</div>
+			</div>	
+		</div>		
+		<div class="collection-blogers__container swiper">	
+			 <div class="swiper-wrapper">
+			{% assign product_list = collection.products  %}
+			{% for product in product_list limit:4 %}	
+				<div class="collection__item swiper-slide  {% unless product.available %}collection__item--disabled{% endunless %}">
+				{% include "collection-item" %}								
+				</div>
+			{% endfor %}
+			 </div>
+		</div>			
+	{% endfor %}	
+	</div>
+</div>
+{% include 'coming-soon' %}
+{% include 'incart' %}

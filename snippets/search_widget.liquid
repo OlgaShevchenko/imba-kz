@@ -1,0 +1,23 @@
+<div itemscope itemtype="http://schema.org/WebSite">
+<link itemprop="url" href="https://imba.shop/"/>
+<form class="search-widget {{ widget_class }}" action="/search" method="get"  itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+	<meta itemprop="target" content="https://imba.shop/search?q={q}"/>
+  <input type="text"
+          name="q"
+          class="search-widget-field"
+          value="{{ search.query | escape }}"
+          placeholder="Хочу купить"
+		  itemprop="query-input" 
+  >
+</input>
+<button type="submit"  class="search-widget-button button is-widget-submit">
+  Найти 
+</button>
+
+  {% if language.not_default? %}
+    <input type="hidden" name="lang" value="{{ language.locale }}">
+  {% endif %}
+
+</form>
+</div>
+{% assign widget_class = null %}
